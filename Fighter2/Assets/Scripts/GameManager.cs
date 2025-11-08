@@ -16,6 +16,14 @@ public class GameManager : MonoBehaviour
     public float horizontalScreenSize;
     public float verticalScreenSize;
 
+    float screenLeftEdge = 0; // Pixel coordinate of the left edge
+    float screenRightEdge = Screen.width; // Pixel coordinate of the right edge
+    float screenBottomEdge = 0; // Pixel coordinate of the bottom edge
+    float screenTopEdge = Screen.height; // Pixel coordinate of the top edge
+
+    Vector3 bottomLeftWorld = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane));
+    Vector3 topRightWorld = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.nearClipPlane));
+
     public int score;
 
     // Start is called before the first frame update
@@ -38,6 +46,7 @@ public class GameManager : MonoBehaviour
     void CreateEnemy()
     {
         Instantiate(enemyOnePrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.9f, verticalScreenSize, 0), Quaternion.Euler(180, 0, 0));
+        
     }
 
     void CreateSky()

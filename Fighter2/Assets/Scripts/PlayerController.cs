@@ -13,6 +13,10 @@ public class PlayerController : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
 
+    private float horizontalScreenLimit = 5.5f;
+    private float verticalScreenLimit = 3.5f;
+
+
     public GameObject bulletPrefab;
     public GameObject explosionPrefab;
 
@@ -62,15 +66,31 @@ public class PlayerController : MonoBehaviour
         float horizontalScreenSize = gameManager.horizontalScreenSize;
         float verticalScreenSize = gameManager.verticalScreenSize;
 
-        if (transform.position.x <= -horizontalScreenSize || transform.position.x > horizontalScreenSize)
+        //Player leaves the screen horizontally
+        if(transform.position.x > horizontalScreenLimit/2 || transform.position.x <= -horizontalScreenLimit/2)
         {
             transform.position = new Vector3(transform.position.x * -1, transform.position.y, 0);
         }
-
-        if (transform.position.y <= -verticalScreenSize || transform.position.y > verticalScreenSize)
+      
+        //Player leaves the screen vertically (OLD)
+        /*
+        if(transform.position.y > verticalScreenLimit || transform.position.y <= -verticalScreenLimit)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y * -1, 0);
+        } 
+        */
+
+
+        //stop player from moving off screen and getting to enemies
+        
+        if(transform.position.y > verticalScreenLimit/8 || transform.position.y <= -verticalScreenLimit/2)
+        {
+            transform.position = new Vector3(0,0,0);
+
         }
+       
+
+
 
     }
 }
