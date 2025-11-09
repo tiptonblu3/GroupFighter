@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
 
     public GameObject bulletPrefab;
+    public GameObject BulletSpecialPrefab;
     public GameObject explosionPrefab;
 
     // Start is called before the first frame update
@@ -51,9 +52,14 @@ public class PlayerController : MonoBehaviour
 
     void Shooting()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(bulletPrefab, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+        }
+
+         if(Input.GetKeyDown(KeyCode.E))
+        {
+            Instantiate(BulletSpecialPrefab, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
         }
     }
 
