@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject enemyOnePrefab;
     public GameObject enemyTwoPrefab;
     public GameObject enemyThreePrefab;
+    public GameObject enemyFourPrefab;
     public GameObject cloudPrefab;
 
     public TextMeshProUGUI livesText;
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
         Instantiate(enemyOnePrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.9f, verticalScreenSize, 0), Quaternion.Euler(180, 0, 0));
         Instantiate(enemyTwoPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.9f, verticalScreenSize, 0), Quaternion.Euler(180, 0, 0));
         Instantiate(enemyThreePrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.9f, verticalScreenSize, 0), Quaternion.Euler(180, 0, 0));
+        Instantiate(enemyFourPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.9f, verticalScreenSize, 0), Quaternion.Euler(180, 0, 0));
     }
 
 

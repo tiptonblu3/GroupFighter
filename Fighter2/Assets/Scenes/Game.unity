@@ -149,9 +149,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 6465214131589529892, guid: 2946f3eb6029d8a40b20e03adb96e4fa, type: 3}
-  enemyOnePrefab: {fileID: 8729755512266785908, guid: fc334afc268b2134b9dc8b0645e1ca01, type: 3}
+  enemyOnePrefab: {fileID: 8729755512266785908, guid: 92abba94bc7154d46807c4ba57e11239, type: 3}
   enemyTwoPrefab: {fileID: 8729755512266785908, guid: 9d651c0f1ab6f73408b9554b3d0bfeb5, type: 3}
   enemyThreePrefab: {fileID: 8729755512266785908, guid: 57d7aa5182902e24cb707961f14f52d5, type: 3}
+  enemyFourPrefab: {fileID: 8729755512266785908, guid: fc334afc268b2134b9dc8b0645e1ca01, type: 3}
   cloudPrefab: {fileID: 8901978872678414076, guid: 14dd4fa52784c904e83c0650f3eea560, type: 3}
   livesText: {fileID: 999943548}
   horizontalScreenSize: 0
