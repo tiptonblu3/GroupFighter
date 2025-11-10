@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+// How things move accross the screen
 public class Glider : MonoBehaviour
 {
 

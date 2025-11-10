@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//nonworking attempt at enemy fighter jet shooting Made by Isis
 public class EnemyShooting : MonoBehaviour
 {
 

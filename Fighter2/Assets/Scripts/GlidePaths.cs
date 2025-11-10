@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+    // Freddie Added Unique Glider Paths
 
 public class GlidePaths : MonoBehaviour
 {
-
+    // How things move accross the screen
     public bool goingRight;
     public float speed;
 

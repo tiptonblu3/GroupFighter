@@ -56,7 +56,8 @@ public class PlayerController : MonoBehaviour
         {
             Instantiate(bulletPrefab, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
         }
-
+        
+        // Freddie Added unique bullet mechanic
          if(Input.GetKeyDown(KeyCode.E))
         {
             Instantiate(BulletSpecialPrefab, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
@@ -73,21 +74,15 @@ public class PlayerController : MonoBehaviour
         float verticalScreenSize = gameManager.verticalScreenSize;
 
         //Player leaves the screen horizontally
-        if(transform.position.x > horizontalScreenLimit/2 || transform.position.x <= -horizontalScreenLimit/2)
+        if (transform.position.x > horizontalScreenLimit / 2 || transform.position.x <= -horizontalScreenLimit / 2)
         {
             transform.position = new Vector3(transform.position.x * -1, transform.position.y, 0);
         }
       
-        //Player leaves the screen vertically (OLD)
-        /*
-        if(transform.position.y > verticalScreenLimit || transform.position.y <= -verticalScreenLimit)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y * -1, 0);
-        } 
-        */
-
-
         //stop player from moving off screen and getting to enemies
+
+
+        //Portion Jordon Did
         
         if(transform.position.y > verticalScreenLimit/8 || transform.position.y <= -verticalScreenLimit/2)
         {
