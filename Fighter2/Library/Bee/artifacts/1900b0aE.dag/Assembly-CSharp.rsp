@@ -420,6 +420,7 @@
 "Assets/Scripts/GlidePaths.cs"
 "Assets/Scripts/Glider.cs"
 "Assets/Scripts/PlayerController.cs"
+"Assets/Scripts/ScoreManager.cs"
 -langversion:9.0
 /deterministic
 /optimize+
