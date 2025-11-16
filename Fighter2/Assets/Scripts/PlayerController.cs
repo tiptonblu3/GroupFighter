@@ -6,6 +6,9 @@ public class PlayerController : MonoBehaviour
 {
 
     public int lives;
+
+    public int livesMax;
+
     private float speed;
 
     private GameManager gameManager;
@@ -13,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
 
-    private float horizontalScreenLimit = 5.5f;
+    private float horizontalScreenLimit = 7.5f;
     private float verticalScreenLimit = 3.5f;
 
 
@@ -26,6 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         lives = 3;
+        livesMax = 4;
         speed = 5.0f;
         gameManager.ChangeLivesText(lives);
     }
@@ -48,6 +52,24 @@ public class PlayerController : MonoBehaviour
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
+    }
+
+     public void GainALife() //This was done by Jordon
+    {
+        //lives = lives - 1;
+        //lives -= 1;
+        lives++;
+
+        // Debug.Log($"Player lives: {lives}"); How to check Lives
+        if (lives >= livesMax) //compares lives to max lives to internally limit it
+        {
+            lives = 3;
+
+            //adds 50 to score
+            ScoreManager.instance.AddScore(50);
+        }
+        //updates lives text after checking lives number ^
+        gameManager.ChangeLivesText(lives);
     }
 
     void Shooting()
@@ -74,7 +96,7 @@ public class PlayerController : MonoBehaviour
         float verticalScreenSize = gameManager.verticalScreenSize;
 
         //Player leaves the screen horizontally
-        if (transform.position.x > horizontalScreenLimit / 2 || transform.position.x <= -horizontalScreenLimit / 2)
+        if (transform.position.x > horizontalScreenLimit || transform.position.x <= -horizontalScreenLimit)
         {
             transform.position = new Vector3(transform.position.x * -1, transform.position.y, 0);
         }
@@ -84,7 +106,7 @@ public class PlayerController : MonoBehaviour
 
         //Portion Jordon Did
         
-        if(transform.position.y > verticalScreenLimit/8 || transform.position.y <= -verticalScreenLimit/2)
+        if(transform.position.y > verticalScreenLimit/4 || transform.position.y <= -verticalScreenLimit)
         {
             transform.position = new Vector3(0,0,0);
 

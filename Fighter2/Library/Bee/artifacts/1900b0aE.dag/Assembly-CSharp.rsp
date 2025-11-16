@@ -419,6 +419,7 @@
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/GlidePaths.cs"
 "Assets/Scripts/Glider.cs"
+"Assets/Scripts/Lives.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/ScoreManager.cs"
 -langversion:9.0

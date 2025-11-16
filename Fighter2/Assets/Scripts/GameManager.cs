@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     public GameObject enemyFourPrefab;
     public GameObject cloudPrefab;
 
+    public GameObject LifePowerupPrefab;
+
+
     public TextMeshProUGUI livesText;
 
     public float horizontalScreenSize;
@@ -38,6 +41,8 @@ public class GameManager : MonoBehaviour
         Instantiate(playerPrefab, transform.position, Quaternion.identity);
         CreateSky();
         InvokeRepeating("CreateEnemy", 1, 3);
+        InvokeRepeating("CreatePowerup", 1, 6);
+
     }
 
     // Update is called once per frame
@@ -56,6 +61,16 @@ public class GameManager : MonoBehaviour
         Instantiate(enemyFourPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.9f, verticalScreenSize, 0), Quaternion.Euler(180, 0, 0));
     }
 
+    void CreatePowerup()
+    {
+         //Life Powerup (By Jordon Dubin)
+        Instantiate(LifePowerupPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.9f, verticalScreenSize, 0), Quaternion.Euler(180, 0, 0));
+
+
+
+
+    }
+
 
     void CreateSky()
     {
@@ -70,8 +85,14 @@ public class GameManager : MonoBehaviour
         score = score + earnedScore;
     }
 
-    public void ChangeLivesText (int currentLives)
+    public void ChangeLivesText(int currentLives)
     {
         livesText.text = "Lives: " + currentLives;
+
     }
+    
+/* For later use 
+Debug.Log("This is an informational message.");
+This allows you to make a message appear when code is run -Jordon Dubin*/
+
 }

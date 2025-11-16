@@ -155,6 +155,7 @@ MonoBehaviour:
   enemyThreePrefab: {fileID: 8729755512266785908, guid: 57d7aa5182902e24cb707961f14f52d5, type: 3}
   enemyFourPrefab: {fileID: 8729755512266785908, guid: fc334afc268b2134b9dc8b0645e1ca01, type: 3}
   cloudPrefab: {fileID: 8901978872678414076, guid: 14dd4fa52784c904e83c0650f3eea560, type: 3}
+  LifePowerupPrefab: {fileID: 8729755512266785908, guid: 87b1e31571845fd4fb7221bfa3bb137a, type: 3}
   livesText: {fileID: 999943548}
   horizontalScreenSize: 0
   verticalScreenSize: 0
