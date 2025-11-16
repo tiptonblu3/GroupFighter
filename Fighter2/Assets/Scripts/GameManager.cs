@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public GameObject cloudPrefab;
 
     public GameObject LifePowerupPrefab;
+    public GameObject coinPrefab;
 
 
     public TextMeshProUGUI livesText;
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
         CreateSky();
         InvokeRepeating("CreateEnemy", 1, 3);
         InvokeRepeating("CreatePowerup", 1, 6);
+        InvokeRepeating("CreateCoin", 1, 5);
 
     }
 
@@ -63,14 +65,17 @@ public class GameManager : MonoBehaviour
 
     void CreatePowerup()
     {
-         //Life Powerup (By Jordon Dubin)
+        //Life Powerup (By Jordon Dubin)
         Instantiate(LifePowerupPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.9f, verticalScreenSize, 0), Quaternion.Euler(180, 0, 0));
-
-
-
-
+        
     }
 
+    void CreateCoin()
+    {
+        //Coin (By Isis Colon)
+        //Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.9f, verticalScreenSize, 0), Quaternion.Euler(180, 0, 0));
+        Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.9f, Random.Range(-verticalScreenSize, verticalScreenSize/4)), Quaternion.Euler(180, 0, 0));
+    }
 
     void CreateSky()
     {
