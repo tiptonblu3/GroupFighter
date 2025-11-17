@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject LifePowerupPrefab;
     public GameObject coinPrefab;
+    public GameObject ShieldPowerUpPrefab;
 
 
     public TextMeshProUGUI livesText;
@@ -23,9 +24,9 @@ public class GameManager : MonoBehaviour
     public float horizontalScreenSize;
     public float verticalScreenSize;
 
-    float screenLeftEdge = 0; // Pixel coordinate of the left edge
+    float screenLeftEdge; // Pixel coordinate of the left edge
     float screenRightEdge = Screen.width; // Pixel coordinate of the right edge
-    float screenBottomEdge = 0; // Pixel coordinate of the bottom edge
+    float screenBottomEdge; // Pixel coordinate of the bottom edge
     float screenTopEdge = Screen.height; // Pixel coordinate of the top edge
 
     Vector3 bottomLeftWorld = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane));
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("CreateEnemy", 1, 3);
         InvokeRepeating("CreatePowerup", 1, 6);
         InvokeRepeating("CreateCoin", 1, 5);
+        InvokeRepeating("CreateShield", 1, 10);
 
     }
 
@@ -75,6 +77,11 @@ public class GameManager : MonoBehaviour
         //Coin (By Isis Colon)
         //Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.9f, verticalScreenSize, 0), Quaternion.Euler(180, 0, 0));
         Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.9f, Random.Range(-verticalScreenSize, verticalScreenSize/4)), Quaternion.Euler(180, 0, 0));
+    }
+
+    void CreateShield()
+    {
+         Instantiate(ShieldPowerUpPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.9f, Random.Range(-verticalScreenSize, verticalScreenSize/4)), Quaternion.Euler(180, 0, 0));
     }
 
     void CreateSky()

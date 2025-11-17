@@ -7,7 +7,7 @@ public class Coins : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        Destroy(this.gameObject, 3);
+        Destroy(this.gameObject, 4);
     }
 
     // Update is called once per frame
