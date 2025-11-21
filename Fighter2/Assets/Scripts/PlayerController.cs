@@ -32,9 +32,10 @@ public class PlayerController : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         lives = 3;
-        livesMax = 4;
+        livesMax = 3;
         speed = 5.0f;
         gameManager.ChangeLivesText(lives);
+        
     }
 
     // Update is called once per frame
@@ -43,6 +44,8 @@ public class PlayerController : MonoBehaviour
     {
         Movement();
         Shooting();
+       // Debug.Log($"lives = " + lives); //How to check Lives
+
     }
 
     [System.Obsolete]
@@ -63,11 +66,11 @@ public class PlayerController : MonoBehaviour
 [System.Obsolete]
      public void GainALife() //This was done by Jordon Dubin
     {
-        
+        gameManager.ChangeLivesText(lives);
         lives++;
         //FindObjectOfType<AudioManager>().Play("Heart");
 
-        // Debug.Log($"Player lives: {lives}"); How to check Lives
+        // Debug.Log($"lives = " + lives); //How to check Lives
         if (lives >= livesMax) //compares lives to max lives to internally limit it
         {
             lives = 3;
@@ -76,8 +79,8 @@ public class PlayerController : MonoBehaviour
             ScoreManager.instance.AddScore(50);
         }
         //updates lives text after checking lives number ^
-        gameManager.ChangeLivesText(lives);
     }
+
 
     [System.Obsolete]
     void Shooting()
@@ -96,17 +99,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
     [System.Obsolete]
     private void OnTriggerEnter2D(Collider2D whatDidIHit)
     {
         if (whatDidIHit.tag == "Coins")
         {
+            ScoreManager.instance.AddScore(250);
             FindObjectOfType<AudioManager>().Play("Coin");   
         }
-        if (whatDidIHit.tag == "Lives")
+        else if(whatDidIHit.tag == "Lives")
         {
             FindObjectOfType<AudioManager>().Play("Heart");
-
+            // whatDidIHit.GetComponent<PlayerController>().GainALife();
+            GainALife();
+        }
+ 
+        else
+        {
+            
         }
     }
 

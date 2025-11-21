@@ -27,6 +27,6 @@ MonoBehaviour:
   - '{}'
   - '{}'
   - '{}'
-  - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":343.0},"firstVisibleIndex":3,"contentPadding":306.0,"contentHeight":816.0,"anchoredItemIndex":3,"anchorOffset":37.0},"m_SelectedIds":[]}'
-  - '{"m_ScrollOffset":{"x":0.0,"y":343.0}}'
+  - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":103.0},"firstVisibleIndex":3,"contentPadding":66.0,"contentHeight":576.0,"anchoredItemIndex":3,"anchorOffset":37.0},"m_SelectedIds":[]}'
+  - '{"m_ScrollOffset":{"x":0.0,"y":103.0}}'
   - '{"m_Value":0.0,"m_LowValue":0.0,"m_HighValue":0.0}'

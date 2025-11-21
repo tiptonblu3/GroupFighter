@@ -17,15 +17,16 @@ public class Coins : MonoBehaviour
         
     }
 
+
     [System.Obsolete]
     private void OnTriggerEnter2D(Collider2D whatDidIHit)
     {
         if (whatDidIHit.tag == "Player")
         {
-            ScoreManager.instance.AddScore(250);
-            FindObjectOfType<AudioManager>().Play("Coin");
+
             Destroy(this.gameObject);
         }
     }
+
 
 }
