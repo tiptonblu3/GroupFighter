@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
     {
         
         lives++;
-        FindObjectOfType<AudioManager>().Play("Heart");
+        //FindObjectOfType<AudioManager>().Play("Heart");
 
         // Debug.Log($"Player lives: {lives}"); How to check Lives
         if (lives >= livesMax) //compares lives to max lives to internally limit it
@@ -96,6 +96,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    [System.Obsolete]
+    private void OnTriggerEnter2D(Collider2D whatDidIHit)
+    {
+        if (whatDidIHit.tag == "Coins")
+        {
+            FindObjectOfType<AudioManager>().Play("Coin");   
+        }
+        if (whatDidIHit.tag == "Lives")
+        {
+            FindObjectOfType<AudioManager>().Play("Heart");
+
+        }
+    }
+
+
+
+
     void Movement()
     {
         horizontalInput = Input.GetAxis("Horizontal");
@@ -112,22 +129,14 @@ public class PlayerController : MonoBehaviour
         }
       
         //stop player from moving off screen and getting to enemies
-
-
-        //Portion Jordon Did
-        /* 
-        if(transform.position.y > verticalScreenLimit/4 || transform.position.y <= -verticalScreenLimit)
-        {
-            transform.position = new Vector3(0,0,0);
-
-        }
-       */
+        //Freeze movement downwards making the player only able to move up, left and right
          if(transform.position.y <= -verticalScreenLimit)
         {
                         transform.position = new Vector3(transform.position.x, yLimitDown, transform.position.z);
 
         }
          
+         //freeze movement upwards making player only able to move down, left and right
          if(transform.position.y > verticalScreenLimit/4 )
         {
             transform.position = new Vector3(transform.position.x, yLimitUp, transform.position.z);
