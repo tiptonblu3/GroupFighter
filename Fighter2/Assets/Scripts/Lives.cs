@@ -18,12 +18,14 @@ public class powerUp : MonoBehaviour
     {
     }
 
-//makes lives obtainable, delete the sprite, change the health
+    //makes lives obtainable, delete the sprite, change the health
+    [System.Obsolete]
     private void OnTriggerEnter2D(Collider2D whatDidIHit)
     {
         if (whatDidIHit.tag == "Player")
         {
             whatDidIHit.GetComponent<PlayerController>().GainALife();
+            
             Destroy(this.gameObject);
         }
     }

@@ -14,6 +14,12 @@ public class GameManager : MonoBehaviour
     public GameObject enemyFourPrefab;
     public GameObject cloudPrefab;
 
+
+     public AudioClip PoweringUpclip;
+    public AudioClip PoweringDownclip;
+
+    public AudioSource audioSource;
+
     public GameObject LifePowerupPrefab;
     public GameObject coinPrefab;
     public GameObject ShieldPowerUpPrefab;
@@ -23,6 +29,10 @@ public class GameManager : MonoBehaviour
 
     public float horizontalScreenSize;
     public float verticalScreenSize;
+
+//temp to check
+    float screenHeight = Screen.height;
+    float screenWidth = Screen.width;
 
     float screenLeftEdge; // Pixel coordinate of the left edge
     float screenRightEdge = Screen.width; // Pixel coordinate of the right edge
@@ -46,6 +56,12 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("CreatePowerup", 1, 6);
         InvokeRepeating("CreateCoin", 1, 5);
         InvokeRepeating("CreateShield", 1, 10);
+
+        //temp to check something
+        Debug.Log("Screen Resolution: " + screenWidth + " x " + screenHeight);
+
+
+
 
     }
 

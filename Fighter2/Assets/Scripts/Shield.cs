@@ -1,7 +1,11 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.Timeline.Actions;
 
 
-    
+
+
 public class Shield : MonoBehaviour
 {
     public float shieldDuration = 5f;  // editable in Inspector
@@ -9,11 +13,15 @@ public class Shield : MonoBehaviour
     public Transform player;   // assign in inspector
     public float followSpeed = 20f;
 
+
+ 
+
     private void Start()
     {
         // Automatically find the player by tag
         GameObject playerObj = GameObject.FindWithTag("Player");
 
+       
         if (playerObj != null)
         {
             player = playerObj.transform;
@@ -24,6 +32,7 @@ public class Shield : MonoBehaviour
         }
     }
 
+    [System.Obsolete]
     private void Update()
     {
         if (player != null)
@@ -40,15 +49,21 @@ public class Shield : MonoBehaviour
 
         if (timer >= shieldDuration)
         {
+            FindObjectOfType<AudioManager>().Play("PoweringDown");
             Destroy(gameObject);
         }
+
+
+
     }
 
+    [System.Obsolete]
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
         {
             Destroy(collision.gameObject);  // destroy enemy
+            FindObjectOfType<AudioManager>().Play("PoweringDown");
             Destroy(gameObject);            // destroy shield
         }
     }

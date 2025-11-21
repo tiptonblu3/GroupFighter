@@ -16,8 +16,11 @@ public class PlayerController : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
 
-    private float horizontalScreenLimit = 7.5f;
+    private float horizontalScreenLimit = 8.5f;
     private float verticalScreenLimit = 3.5f;
+
+    private float yLimitUp = 0.85f;
+    private float yLimitDown = -3.5f;
 
 
     public GameObject bulletPrefab;
@@ -35,12 +38,14 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
+    [System.Obsolete]
     void Update()
     {
         Movement();
         Shooting();
     }
 
+    [System.Obsolete]
     public void LoseALife()
     {
         //lives = lives - 1;
@@ -50,15 +55,17 @@ public class PlayerController : MonoBehaviour
         if (lives == 0)
         {
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            //search for audio and apply it without needing to add it to script
+            FindObjectOfType<AudioManager>().Play("PlaneDeath");
             Destroy(this.gameObject);
         }
     }
-
-     public void GainALife() //This was done by Jordon
+[System.Obsolete]
+     public void GainALife() //This was done by Jordon Dubin
     {
-        //lives = lives - 1;
-        //lives -= 1;
+        
         lives++;
+        FindObjectOfType<AudioManager>().Play("Heart");
 
         // Debug.Log($"Player lives: {lives}"); How to check Lives
         if (lives >= livesMax) //compares lives to max lives to internally limit it
@@ -72,17 +79,20 @@ public class PlayerController : MonoBehaviour
         gameManager.ChangeLivesText(lives);
     }
 
+    [System.Obsolete]
     void Shooting()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(bulletPrefab, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+            FindObjectOfType<AudioManager>().Play("Shoot");
         }
         
         // Freddie Added unique bullet mechanic
          if(Input.GetKeyDown(KeyCode.E))
         {
             Instantiate(BulletSpecialPrefab, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+            FindObjectOfType<AudioManager>().Play("Shoot");
         }
     }
 
@@ -105,14 +115,25 @@ public class PlayerController : MonoBehaviour
 
 
         //Portion Jordon Did
-        
+        /* 
         if(transform.position.y > verticalScreenLimit/4 || transform.position.y <= -verticalScreenLimit)
         {
             transform.position = new Vector3(0,0,0);
 
         }
-       
+       */
+         if(transform.position.y <= -verticalScreenLimit)
+        {
+                        transform.position = new Vector3(transform.position.x, yLimitDown, transform.position.z);
 
+        }
+         
+         if(transform.position.y > verticalScreenLimit/4 )
+        {
+            transform.position = new Vector3(transform.position.x, yLimitUp, transform.position.z);
+
+
+        }
 
 
     }
